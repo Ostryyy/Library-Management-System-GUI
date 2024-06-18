@@ -13,3 +13,5 @@ export function logout() {
     localStorage.removeItem('token');
     token.set(null);
 }
+
+export const getToken = () => token();
