@@ -1,0 +1,38 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>My Reservations</mat-card-title>
+    <mat-card-content>
+      <ng-container *ngIf="reservations.length > 0; else noReservations">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="bookTitle">
+            <th mat-header-cell *matHeaderCellDef>Book Title</th>
+            <td mat-cell *matCellDef="let element">{{ element.bookTitle }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="reservationDate">
+            <th mat-header-cell *matHeaderCellDef>Reservation Date</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.reservation_date | date }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-button (click)="cancelReservation(element.id)">
+                Cancel
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </ng-container>
+
+      <ng-template #noReservations>
+        <p>No reservations found.</p>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+</div>

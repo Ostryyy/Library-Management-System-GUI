@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+
+  mat-card {
+    width: 80vw;
+
+    mat-card-title {
+      padding: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.full-width {
+  width: 100%;
+}
