@@ -61,16 +61,18 @@ export class LoginComponent implements OnDestroy {
     };
 
     this.subs$.add(
-      this.authService.login(user).subscribe(
-        (response) => {
+      this.authService.login(user).subscribe({
+        next: (response) => {
           login(response.token);
-          this.toastr.success('Login successful');
-          this.router.navigate(['/books']);
+          this.router.navigate(['/']);
         },
-        (error) => {
+        error: (error) => {
           this.toastr.error(error.error);
-        }
-      )
+        },
+        complete: () => {
+          this.toastr.success('Login successful');
+        },
+      })
     );
   }
 

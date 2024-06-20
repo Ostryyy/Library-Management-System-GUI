@@ -58,17 +58,19 @@ export class RegisterComponent implements OnDestroy {
       username: this.registerForm.get('username')?.value ?? '',
       password: this.registerForm.get('password')?.value ?? '',
     };
-    
+
     this.subs$.add(
-      this.authService.register(user).subscribe(
-        (response) => {
-          this.toastr.success('Registration successful');
+      this.authService.login(user).subscribe({
+        next: (response) => {
           this.router.navigate(['/login']);
         },
-        (error) => {
+        error: (error) => {
           this.toastr.error(error.error);
-        }
-      )
+        },
+        complete: () => {
+          this.toastr.success('Registration successful');
+        },
+      })
     );
   }
 
