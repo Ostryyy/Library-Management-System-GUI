@@ -5,12 +5,12 @@ import { Book } from '../../models/book';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BookService {
   private baseUrl = `${environment.apiUrl}/books`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}`);
@@ -20,15 +20,15 @@ export class BookService {
     return this.http.post<Book>(`${this.baseUrl}`, book);
   }
 
-  updateBook(bookId: number, book: Book): Observable<Book> {
+  updateBook(bookId: string, book: Book): Observable<Book> {
     return this.http.put<Book>(`${this.baseUrl}/${bookId}`, book);
   }
 
-  deleteBook(bookId: number): Observable<void> {
+  deleteBook(bookId: string): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${bookId}`);
   }
 
-  getBookById(bookId: number): Observable<Book> {
+  getBookById(bookId: string): Observable<Book> {
     return this.http.get<Book>(`${this.baseUrl}/${bookId}`);
   }
 }
