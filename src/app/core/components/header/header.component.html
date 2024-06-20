@@ -1,4 +1,21 @@
 <mat-toolbar color="primary" *ngIf="isLoggedIn()">
   <span>Library Management System</span>
-  <button mat-flat-button color="primary" (click)="logout()">Logout</button>
+  <span class="spacer"></span>
+  <div class="buttons">
+    <button mat-button (click)="navigateToHome()">Home</button>
+    <button mat-button *ngIf="!isAdmin()" (click)="navigateToReservations()">
+      My Reservations
+    </button>
+    <button mat-flat-button color="primary" (click)="logout()">Logout</button>
+  </div>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="navigateToHome()">Home</button>
+    <button mat-menu-item *ngIf="!isAdmin()" (click)="navigateToReservations()">
+      My Reservations
+    </button>
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
 </mat-toolbar>
