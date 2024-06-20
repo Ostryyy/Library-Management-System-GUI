@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="container">
+    <mat-card>
+        <mat-card-title class="full-width">Login</mat-card-title>
+        <mat-card-content>
+            <form (ngSubmit)="onSubmit()">
+                <mat-form-field class="full-width">
+                    <mat-label>Username</mat-label>
+                    <input matInput [(ngModel)]="user.username" name="username" required>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput [(ngModel)]="user.password" name="password" type="password" required>
+                </mat-form-field>
+                <button class="full-width" mat-raised-button color="primary" type="submit">Login</button>
+            </form>
+        </mat-card-content>
+        <mat-card-actions class="full-width">
+            <a class="link" routerLink="/register">Don't have an account?</a>
+        </mat-card-actions>
+    </mat-card>
+</div>
