@@ -1,0 +1,50 @@
+<div class="full-width buttons" *ngIf="isAdmin">
+  <button mat-raised-button color="primary" (click)="openAddBookDialog()">
+    Add Book
+  </button>
+</div>
+
+<div class="container">
+  <mat-card *ngFor="let book of books" class="book-card">
+    <mat-card-title>{{ book.title }}</mat-card-title>
+    <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+    <mat-card-content>
+      <p>Year: {{ book.year }}</p>
+      <p>Category: {{ book.category }}</p>
+      <p>Available Copies: {{ book.available_copies }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        *ngIf="isAdmin"
+        mat-button
+        color="primary"
+        (click)="openEditBookDialog(book)"
+      >
+        Edit
+      </button>
+      <button
+        *ngIf="isAdmin"
+        mat-button
+        color="warn"
+        (click)="deleteBook(book)"
+      >
+        Delete
+      </button>
+      <button
+        mat-button
+        *ngIf="isLoggedIn() && !isBookReserved(book.id!)"
+        (click)="openReservationConfirmDialog(book)"
+      >
+        Reserve
+      </button>
+      <button
+        mat-button
+        *ngIf="isLoggedIn() && isBookReserved(book.id!)"
+        (click)="cancelReservation(book.id!)"
+      >
+        Cancel Reservation
+      </button>
+      <button mat-button (click)="openBookDetailsDialog(book)">Details</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

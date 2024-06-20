@@ -1,0 +1,43 @@
+.container {
+  display: grid;
+  gap: 16px;
+  padding: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.buttons {
+  box-sizing: border-box;
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.book-card {
+  padding: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  mat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  mat-card-title,
+  mat-card-subtitle {
+    text-align: center;
+  }
+
+  mat-card-content {
+    flex-grow: 1;
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}
