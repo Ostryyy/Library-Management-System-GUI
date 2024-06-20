@@ -32,7 +32,7 @@
       </button>
       <button
         mat-button
-        *ngIf="isLoggedIn() && !isBookReserved(book.id!)"
+        *ngIf="!isAdmin && isLoggedIn() && !isBookReserved(book.id!)"
         (click)="openReservationConfirmDialog(book)"
       >
         Reserve
