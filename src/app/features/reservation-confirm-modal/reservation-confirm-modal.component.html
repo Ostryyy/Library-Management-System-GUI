@@ -1,0 +1,10 @@
+<div class="container">
+  <h1 mat-dialog-title>Confirm Reservation</h1>
+  <div mat-dialog-content>
+    <p>Are you sure you want to reserve the book "{{ book.title }}"?</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button color="primary" (click)="onConfirm()">Confirm</button>
+  </div>
+</div>
