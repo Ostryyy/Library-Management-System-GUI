@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -22,20 +23,25 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
   ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
   user: User = { username: '', password: '' };
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   onSubmit(): void {
     this.authService.register(this.user).subscribe(
-      response => {
-        console.log('Registration successful', response);
+      (response) => {
+        this.toastr.success('Registration successful');
+        this.router.navigate(['/login']);
       },
-      error => {
-        console.error('Registration error', error);
+      (error) => {
+        this.toastr.error(error.error);
       }
     );
   }
