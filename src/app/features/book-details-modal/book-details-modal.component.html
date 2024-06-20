@@ -1,0 +1,43 @@
+<div class="container">
+  <h1 mat-dialog-title>Book Details</h1>
+  <div mat-dialog-content>
+    <p><strong>Title:</strong> {{ book.title }}</p>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Year:</strong> {{ book.year }}</p>
+    <p><strong>Category:</strong> {{ book.category }}</p>
+    <p><strong>Available Copies:</strong> {{ book.available_copies }}</p>
+
+    <h2>Reviews</h2>
+    <div *ngFor="let review of reviews">
+      <p><strong>Rating:</strong> {{ review.rating }}</p>
+      <p><strong>Comment:</strong> {{ review.comment }}</p>
+      <p><strong>Date:</strong> {{ review.date | date : "medium" }}</p>
+      <hr />
+    </div>
+
+    <h2>Add Review</h2>
+    <form (ngSubmit)="submitReview()">
+      <mat-form-field class="full-width">
+        <mat-label>Rating</mat-label>
+        <mat-select [(ngModel)]="newReview.rating" name="rating" required>
+          <mat-option *ngFor="let r of [1, 2, 3, 4, 5]" [value]="r">{{
+            r
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Comment</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="newReview.comment"
+          name="comment"
+          required
+        ></textarea>
+      </mat-form-field>
+      <button mat-button type="submit">Submit Review</button>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="onClose()">Close</button>
+  </div>
+</div>
