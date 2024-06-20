@@ -32,6 +32,10 @@ export class ReservationService {
     );
   }
 
+  getReservationsByBook(bookId: string): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.baseUrl}/book/${bookId}`);
+  }
+
   reserveBook(bookId: string): Observable<any> {
     return this.http.post(`${this.baseUrl}`, { bookId });
   }
