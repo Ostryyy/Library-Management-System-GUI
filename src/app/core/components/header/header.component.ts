@@ -33,6 +33,10 @@ export class HeaderComponent {
     this.router.navigate(['/reservations']);
   }
 
+  navigateToAdmin(): void {
+    this.router.navigate(['/admin']);
+  }
+
   logout(): void {
     logout();
     this.router.navigate(['/login']);
