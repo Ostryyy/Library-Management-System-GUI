@@ -3,11 +3,12 @@ import { isLoggedIn, logout } from '../../signals/auth.signal';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatToolbar } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, MatToolbar],
+  imports: [CommonModule, MatToolbar, MatButtonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
