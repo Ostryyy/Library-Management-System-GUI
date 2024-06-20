@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 mat-dialog-title>{{ data.book ? "Edit Book" : "Add Book" }}</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="bookForm">
+      <mat-form-field class="full-width">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Author</mat-label>
+        <input matInput formControlName="author" />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Year</mat-label>
+        <input matInput formControlName="year" type="number" />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Category</mat-label>
+        <input matInput formControlName="category" />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Available Copies</mat-label>
+        <input matInput formControlName="available_copies" type="number" />
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button color="primary" (click)="onSave()">Save</button>
+  </div>
+</div>

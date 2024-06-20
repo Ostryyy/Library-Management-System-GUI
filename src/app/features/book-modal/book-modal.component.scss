@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  .container {
+    padding: 16px;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    mat-dialog-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
